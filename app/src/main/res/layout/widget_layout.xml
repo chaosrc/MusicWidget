@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/widget_background"
+    >
+
+    <!--<ImageButton-->
+        <!--android:layout_toRightOf="@+id/music_start"-->
+        <!--android:layout_toEndOf="@+id/music_start"-->
+        <!--android:id="@+id/widget_button"-->
+        <!--android:layout_width="40dp"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:src="@drawable/ic_play_arrow_white_24dp"-->
+        <!--android:visibility="gone"/>-->
+
+
+    <TextView
+        android:id="@+id/music_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="音乐播放器"
+        android:textSize="24sp"
+        android:maxLines="1"
+        android:gravity="center"
+        android:layout_alignRight="@+id/music_next"
+        android:layout_alignEnd="@+id/music_next"
+        android:layout_alignLeft="@+id/music_previous"
+        android:layout_alignStart="@+id/music_previous"
+        android:layout_centerHorizontal="true"/>
+    <ImageButton
+        android:id="@+id/music_start"
+        android:layout_below="@id/music_name"
+        android:layout_centerHorizontal="true"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@color/widget_background"
+        android:src="@drawable/ic_play_arrow_white_24dp"
+        />
+    <ImageButton
+        android:id="@+id/music_previous"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_toLeftOf="@+id/music_start"
+        android:layout_toStartOf="@+id/music_start"
+        android:layout_below="@+id/music_name"
+        android:background="@color/widget_background"
+        android:src="@drawable/ic_skip_previous_white_24dp"
+        />
+    <ImageButton
+        android:id="@+id/music_next"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_toRightOf="@+id/music_start"
+        android:layout_toEndOf="@+id/music_start"
+        android:layout_below="@+id/music_name"
+        android:src="@drawable/ic_skip_next_white_24dp"
+        android:background="@color/widget_background"
+        />
+
+
+</RelativeLayout>
