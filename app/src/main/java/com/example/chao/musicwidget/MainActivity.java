@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView musicName;
     private ImageView picture;
     public static String PLAY_ANY="com.example.music_widget.PLAY_ANY";
+    public NotificationBroadcast notify;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         filter.addAction(PLAY_ANY);
         registerReceiver(receiver,filter);
 
+        Intent notifyIntent=new Intent(this,NotificationBroadcast.class);
+        //notifyIntent.setAction(NotificationBroadcast.NOTIFICATIONACTION);
+        sendBroadcast(notifyIntent);
+
+        Intent widgetIntent=new Intent(this,WidgetBroadcast.class);
+        //widgetIntent.setAction(WidgetBroadcast.WIDGET_CREATE);
+        sendBroadcast(widgetIntent);
+
+
         ArrayAdapter<String> adapter=new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,getMusicInfo());
         ListView listView= (ListView) findViewById(R.id.music_item);
@@ -62,6 +72,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d(TAG,"POSITION:"+position+"id: "+id);
             }
         });
+
+        findViewById(R.id.music_browse).setOnClickListener(this);
+//        notify = new NotificationBroadcast();
+//        notify.prepareNotification(this);
     }
 
     @Override
@@ -85,6 +99,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.music_previous:
                 sendBroadcast(getSendIntent(WidgetBroadcast.WIDGET_PREVIOUS));
+                break;
+            case R.id.music_browse:
+                Intent intent=new Intent(this,BrowseActivity.class);
+                startActivity(intent);
+               // notify.start(this);
+                break;
 
         }
 
@@ -100,7 +120,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
     public Intent getSendIntent(String action,int i){
-        Intent intent=new Intent(this,WidgetBroadcast.class);
+        //Intent intent=new Intent(this,WidgetBroadcast.class);
+        Intent intent=new Intent();
         intent.setAction(action);
         intent.putExtra("NUMBER",i);
         return intent;

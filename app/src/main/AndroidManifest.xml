@@ -8,7 +8,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".MainActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,12 +25,26 @@
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
                 <action android:name="com.example.music_service.MUSIC_DATA"/>
                 <action android:name="com.example.music_widget.PLAY_ANY"/>
+                <action android:name="com.example.music_widget.CREATE"/>
+                <action android:name="com.example.music_widget.START"/>
+                <action android:name="com.example.music_widget.NEXT"/>
+                <action android:name="com.example.music_widget.NEXT"/>
+                <action android:name="com.example.music_widget.PREVIEW"/>
             </intent-filter>
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@layout/widget"
                 />
+        </receiver>
+        <activity android:name=".BrowseActivity">
 
+        </activity>
+        <receiver android:name=".NotificationBroadcast">
+            <intent-filter>
+                <action android:name="com.chao.example.notification_start"/>
+                <action android:name="com.example.music_widget.START"/>
+                <action android:name="com.example.music_service.MUSIC_DATA"/>
+            </intent-filter>
         </receiver>
     </application>
 

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/widget_background">
+
+    <ImageView
+        android:id="@+id/notify_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/music"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
+        android:visibility="visible"
+        android:layout_toStartOf="@+id/notify_music_name"
+        android:layout_alignBottom="@+id/notify_music_start"
+        android:layout_toLeftOf="@+id/notify_music_name" />
+
+    <TextView
+        android:id="@+id/notify_music_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="音乐播放器"
+        android:textSize="20sp"
+        android:maxLines="1"
+        android:gravity="center"
+        android:layout_alignRight="@+id/notify_music_next"
+        android:layout_alignEnd="@+id/notify_music_next"
+        android:layout_alignLeft="@+id/notify_music_previous"
+        android:layout_alignStart="@+id/notify_music_previous"
+        />
+    <ProgressBar
+        android:id="@+id/notify_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/notify_music_name"
+        android:layout_alignRight="@+id/notify_music_name"
+        android:layout_alignEnd="@+id/notify_music_name"
+        android:layout_alignLeft="@+id/notify_music_name"
+        android:layout_alignStart="@+id/notify_music_name"
+        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+        />
+    <ImageButton
+        android:id="@+id/notify_music_start"
+        android:layout_below="@id/notify_progress"
+        android:layout_centerHorizontal="true"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="10dp"
+        android:background="@color/widget_background"
+        android:src="@drawable/ic_play_arrow_white_24dp"
+        />
+    <ImageButton
+        android:id="@+id/notify_music_previous"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_toLeftOf="@+id/notify_music_start"
+        android:layout_toStartOf="@+id/notify_music_start"
+        android:layout_below="@+id/notify_progress"
+        android:background="@color/widget_background"
+        android:padding="10dp"
+        android:src="@drawable/ic_skip_previous_white_24dp"
+        />
+    <ImageButton
+        android:id="@+id/notify_music_next"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_toRightOf="@+id/notify_music_start"
+        android:layout_toEndOf="@+id/notify_music_start"
+        android:layout_below="@+id/notify_progress"
+        android:src="@drawable/ic_skip_next_white_24dp"
+        android:background="@color/widget_background"
+        android:padding="10dp"
+        />
+
+</RelativeLayout>

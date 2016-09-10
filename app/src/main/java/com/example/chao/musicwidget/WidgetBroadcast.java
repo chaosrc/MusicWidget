@@ -20,6 +20,7 @@ public class WidgetBroadcast extends AppWidgetProvider {
     public static String PAUSE="com.example.music_widget.PAUSE";
     public static String WIDGET_NEXT="com.example.music_widget.NEXT";
     public static String WIDGET_PREVIOUS="com.example.music_widget.PREVIEW";
+    public static String WIDGET_CREATE="com.example.music_widget.CREATE";
     private static Boolean state=false;
     private static Boolean DEFAULT=false;
 
@@ -28,6 +29,9 @@ public class WidgetBroadcast extends AppWidgetProvider {
     public void onReceive(Context context, Intent intent) {
        // boolean state=false;
         super.onReceive(context, intent);
+//        if(TextUtils.equals(intent.getAction(),WIDGET_CREATE)){
+//            Log.d("MainActivity","wiget");
+//        }
 
         RemoteViews remoteViews=new RemoteViews(context.getPackageName(),R.layout.widget_layout);
 

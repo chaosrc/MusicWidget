@@ -13,6 +13,14 @@
         android:textSize="24dp"
         android:padding="8dp"
         android:background="@color/widget_background"/>
+    <TextView
+        android:id="@+id/music_browse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:text="noti"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true" />
     <ListView
         android:id="@+id/music_item"
         android:layout_below="@+id/text"

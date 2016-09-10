@@ -28,6 +28,7 @@ public class MusicService extends Service {
     public static final String SERVICE_NEXT="com.example.music_service.SERVICE_NEXT";
     public static final String SERVICE_PREViOUS="com.example.music_service.SERVICE_PREVIOUS";
     public static final String MUSIC_DATA="com.example.music_service.MUSIC_DATA";
+    public static final String MUSIC_STATE_TAG="music_service_state";
 
 
     public  BroadcastReceiver receiver=new BroadcastReceiver() {
@@ -35,14 +36,20 @@ public class MusicService extends Service {
         public void onReceive(Context context, Intent intent) {
             if(intent!=null) {
                 if (TextUtils.equals(intent.getAction(), SERVICE_PLAY)) {
-                    if(!intent.getBooleanExtra("state",true))
+                    //if(!intent.getBooleanExtra("state",true))
+                    if(!mMusic.mMusicPlayer.isPlaying())
                     {
                         Log.d(TAG,"play");
                         mMusic.mMusicPlayer.start();
+//                        Intent intentstart=mMusic.getMusicIntent();
+//                        intent.putExtra("musicstate",mMusic.mMusicPlayer.isPlaying());
                         MusicService.this.sendBroadcast(mMusic.getMusicIntent());
                     }
                     else if( mMusic.mMusicPlayer.isPlaying()){
                         mMusic.mMusicPlayer.pause();
+//                        Intent intentpause=mMusic.getMusicIntent();
+//                        intent.putExtra(MUSIC_STATE_TAG,!mMusic.mMusicPlayer.isPlaying());
+                        MusicService.this.sendBroadcast(mMusic.getMusicIntent());
                     }
                 }
                 if(TextUtils.equals(intent.getAction(),SERVICE_NEXT)){
@@ -216,6 +223,7 @@ public class MusicService extends Service {
             intent.putExtra("TITLE",getCurrentMusicTitle());
             intent.putExtra("ARTIST",getCurrentMusicArtist());
             intent.putExtra("PICTURE",getAblumGraphic());
+            intent.putExtra("MUSIC_STATE",mMusicPlayer.isPlaying());
             return intent;
         }
 
